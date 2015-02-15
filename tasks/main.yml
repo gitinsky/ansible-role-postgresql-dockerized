@@ -1,0 +1,24 @@
+---
+- name: make a build dir
+  file: state=directory name=/root/postgresql-dockerized
+
+- name: put Dockerfile
+  template: src=Dockerfile dest=/root/postgresql-dockerized/Dockerfile
+
+- name: put postgresql.rb
+  template: src=postgresql.rb dest=/root/postgresql-dockerized/postgresql.rb
+
+- name: put pgdg.list
+  template: src=pgdg.list dest=/root/postgresql-dockerized/pgdg.list
+
+- name: build a Docker image for postgresql
+  command: docker build -t gitinsky/postgresql:0.1.0 --rm /root/postgresql-dockerized
+
+- name: check if a postgresql container is started
+  command: bash -c "docker ps | grep postgresql"
+  ignore_errors: True
+  register: result
+
+- name: start a postgresql container
+  command: docker run -d -p=5433:5432 -v {{ ext_postgresql_volume }}:/var/lib/postgresql/9.3/main -name postgresql gitinsky/postgresql:0.1.0
+  when: result|failed
