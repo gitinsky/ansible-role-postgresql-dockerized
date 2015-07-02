@@ -8,6 +8,9 @@
 - name: put postgresql.rb
   template: src=postgresql.rb dest=/root/postgresql-dockerized/postgresql.rb
 
+- name: put prestart.sh
+  template: src=prestart.sh dest=/root/postgresql-dockerized/prestart.sh mode=755
+
 - name: put pgdg.list
   template: src=pgdg.list dest=/root/postgresql-dockerized/pgdg.list
 

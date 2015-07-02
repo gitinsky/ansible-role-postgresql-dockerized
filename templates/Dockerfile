@@ -6,3 +6,4 @@ ADD pgdg.list /etc/apt/sources.d/pgdg.list
 RUN apt-get update && apt-get -y install postgresql-9.3
 VOLUME /postgresql/
 ADD postgresql.rb /etc/eye/postgresql.rb
+ADD prestart.sh /root/prestart.sh
