@@ -9,7 +9,7 @@ if [ ! -f /var/lib/postgresql/9.3/main/PG_VERSION ]; then
    cp /etc/postgresql/9.3/default/postgresql.conf /etc/postgresql/9.3/main/postgresql.conf
    cp /etc/postgresql/9.3/default/pg_hba.conf /etc/postgresql/9.3/main/pg_hba.conf
    sudo -u postgres /usr/lib/postgresql/9.3/bin/pg_ctl -w -D /etc/postgresql/9.3/main start
-   sudo -u postgres psql -c "ALTER USER postgres WITH UNENCRYPTED PASSWORD '{{ posgtres_superuser_password }}'"
+   sudo -u postgres psql -c "ALTER USER postgres WITH UNENCRYPTED PASSWORD '{{ postgres_superuser_password }}'"
    sudo -u postgres /usr/lib/postgresql/9.3/bin/pg_ctl -w -D /etc/postgresql/9.3/main stop
 fi
 cp /etc/postgresql/9.3/default/postgresql.conf /etc/postgresql/9.3/main/postgresql.conf
