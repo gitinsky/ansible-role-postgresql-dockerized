@@ -15,7 +15,7 @@
   template: src=pgdg.list dest=/root/postgresql-dockerized/pgdg.list
 
 - name: build a Docker image for postgresql
-  command: docker build -t gitinsky/postgresql:0.1.2 --rm /root/postgresql-dockerized
+  command: docker build -t gitinsky/postgresql:0.2.1 --rm /root/postgresql-dockerized
 
 - name: tag it as latest
   command: docker build -t gitinsky/postgresql:latest --rm /root/postgresql-dockerized
